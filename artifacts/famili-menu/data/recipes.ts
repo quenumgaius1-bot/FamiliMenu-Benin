@@ -1,0 +1,325 @@
+export type MealPeriod = 'petit-déjeuner' | 'déjeuner' | 'dîner';
+export type RecipeImage = 'akara' | 'stew';
+
+export interface RecipeIngredient {
+  name: string;
+  quantity: string;
+}
+
+export interface Recipe {
+  id: string;
+  name: string;
+  region: 'Bénin' | "Afrique de l'Ouest";
+  description: string;
+  preparationMinutes: number;
+  ingredients: RecipeIngredient[];
+  steps: string[];
+  videoTitle: string;
+  videoUrl: string;
+  image: RecipeImage;
+  suitableFor: MealPeriod[];
+}
+
+// Liens directs retrouvés avec les titres correspondants dans les résultats vidéo.
+export const RECIPES: Recipe[] = [
+  {
+    id: 'akassa-gombo',
+    name: 'Akassa et sauce gombo',
+    region: 'Bénin',
+    description: 'Une pâte de maïs fermentée accompagnée d’une sauce gombo généreuse.',
+    preparationMinutes: 55,
+    image: 'stew',
+    suitableFor: ['déjeuner', 'dîner'],
+    ingredients: [
+      { name: 'Pâte de maïs fermentée', quantity: '500 g' },
+      { name: 'Gombos frais', quantity: '300 g' },
+      { name: 'Poisson fumé', quantity: '200 g' },
+      { name: 'Oignon', quantity: '1 moyen' },
+      { name: 'Huile rouge', quantity: '2 c. à soupe' },
+      { name: 'Piment et sel', quantity: 'selon le goût' },
+    ],
+    steps: [
+      'Faites chauffer la pâte de maïs avec un peu d’eau en remuant jusqu’à obtenir une pâte lisse et épaisse.',
+      'Coupez les gombos et faites-les cuire avec l’oignon, le poisson fumé et un verre d’eau.',
+      'Ajoutez l’huile rouge, le piment et le sel. Laissez mijoter jusqu’à ce que la sauce épaississe.',
+      'Servez la sauce chaude avec l’akassa.',
+    ],
+    videoTitle: "Sauce GOMBO accompagnée de L'Akassa",
+    videoUrl: 'https://www.youtube.com/watch?v=p_uG4X18EJo',
+  },
+  {
+    id: 'akassa-sauce',
+    name: 'Akassa, sauce traditionnelle',
+    region: 'Bénin',
+    description: 'Le classique akassa servi avec sa sauce de poisson et de piment.',
+    preparationMinutes: 60,
+    image: 'stew',
+    suitableFor: ['déjeuner', 'dîner'],
+    ingredients: [
+      { name: 'Farine ou pâte de maïs fermentée', quantity: '500 g' },
+      { name: 'Poisson fumé', quantity: '250 g' },
+      { name: 'Tomates', quantity: '3' },
+      { name: 'Oignon', quantity: '1' },
+      { name: 'Eau', quantity: '700 ml' },
+      { name: 'Piment et sel', quantity: 'selon le goût' },
+    ],
+    steps: [
+      'Délayez la pâte de maïs dans un peu d’eau froide pour éviter les grumeaux.',
+      'Faites cuire à feu doux en remuant jusqu’à ce que l’akassa soit ferme et brillant.',
+      'Préparez une sauce avec les tomates, l’oignon, le poisson, le piment et un peu d’eau.',
+      'Laissez mijoter 20 minutes puis servez avec l’akassa.',
+    ],
+    videoTitle: 'Sauce d’AKASSA',
+    videoUrl: 'https://www.youtube.com/watch?v=mETM9jRaVFk',
+  },
+  {
+    id: 'poulet-arachide',
+    name: 'Poulet fumé à la sauce arachide',
+    region: 'Bénin',
+    description: 'Une sauce onctueuse aux arachides, relevée de tomates et de piment.',
+    preparationMinutes: 65,
+    image: 'stew',
+    suitableFor: ['déjeuner', 'dîner'],
+    ingredients: [
+      { name: 'Poulet fumé', quantity: '500 g' },
+      { name: 'Pâte d’arachide', quantity: '200 g' },
+      { name: 'Tomates', quantity: '2' },
+      { name: 'Oignons', quantity: '2' },
+      { name: 'Eau', quantity: '1,2 l' },
+      { name: 'Piment et sel', quantity: 'selon le goût' },
+    ],
+    steps: [
+      'Faites revenir les oignons émincés et les tomates dans une marmite.',
+      'Ajoutez le poulet fumé et l’eau, puis portez à petite ébullition.',
+      'Délayez la pâte d’arachide dans un bol avec une louche de bouillon et versez dans la marmite.',
+      'Laissez cuire à feu doux en remuant. Assaisonnez et servez avec du riz ou une pâte.',
+    ],
+    videoTitle: 'Recette de la sauce Arachide au poulet fumé',
+    videoUrl: 'https://www.youtube.com/watch?v=mFJu9oX8HtY',
+  },
+  {
+    id: 'sauce-dah',
+    name: 'Sauce dah à l’arachide',
+    region: "Afrique de l'Ouest",
+    description: 'Des feuilles de dah mijotées dans une sauce riche à la pâte d’arachide.',
+    preparationMinutes: 50,
+    image: 'stew',
+    suitableFor: ['déjeuner', 'dîner'],
+    ingredients: [
+      { name: 'Feuilles de dah ou oseille', quantity: '400 g' },
+      { name: 'Pâte d’arachide', quantity: '250 g' },
+      { name: 'Viande ou poisson fumé', quantity: '300 g' },
+      { name: 'Tomates', quantity: '2' },
+      { name: 'Oignon', quantity: '1' },
+      { name: 'Eau et sel', quantity: 'selon besoin' },
+    ],
+    steps: [
+      'Lavez soigneusement les feuilles et faites-les précuire dans de l’eau bouillante.',
+      'Faites cuire la viande ou le poisson avec l’oignon et les tomates.',
+      'Délayez la pâte d’arachide avec de l’eau chaude puis ajoutez-la à la marmite.',
+      'Ajoutez les feuilles et laissez mijoter à feu doux jusqu’à obtenir une sauce épaisse.',
+    ],
+    videoTitle: 'SAUCE DAH ARRACHIDE (feuilles d’oseille)',
+    videoUrl: 'https://www.youtube.com/watch?v=-TPI2flMPUc',
+  },
+  {
+    id: 'akara',
+    name: 'Akara, beignets de haricots',
+    region: "Afrique de l'Ouest",
+    description: 'Des beignets dorés et croustillants, servis au petit-déjeuner ou en collation.',
+    preparationMinutes: 35,
+    image: 'akara',
+    suitableFor: ['petit-déjeuner'],
+    ingredients: [
+      { name: 'Haricots cornille secs', quantity: '300 g' },
+      { name: 'Oignon', quantity: '1 petit' },
+      { name: 'Piment frais', quantity: '1' },
+      { name: 'Sel', quantity: '½ c. à café' },
+      { name: 'Huile de friture', quantity: '500 ml' },
+    ],
+    steps: [
+      'Faites tremper les haricots, puis frottez-les pour retirer leur peau et rincez-les.',
+      'Mixez les haricots avec l’oignon et le piment jusqu’à obtenir une pâte épaisse.',
+      'Ajoutez le sel et fouettez la pâte quelques minutes pour l’aérer.',
+      'Déposez des cuillerées de pâte dans l’huile chaude et faites dorer des deux côtés.',
+    ],
+    videoTitle: 'How to Make Nigerian Akara | Easy and Tasty Recipe',
+    videoUrl: 'https://www.youtube.com/watch?v=qRi_pPyg4ho',
+  },
+  {
+    id: 'jollof',
+    name: 'Riz jollof',
+    region: "Afrique de l'Ouest",
+    description: 'Du riz parfumé cuit dans une sauce tomate épicée.',
+    preparationMinutes: 55,
+    image: 'stew',
+    suitableFor: ['déjeuner', 'dîner'],
+    ingredients: [
+      { name: 'Riz long grain', quantity: '400 g' },
+      { name: 'Tomates mûres', quantity: '400 g' },
+      { name: 'Poivron rouge', quantity: '1' },
+      { name: 'Oignon', quantity: '1' },
+      { name: 'Bouillon', quantity: '600 ml' },
+      { name: 'Huile, thym et sel', quantity: 'selon le goût' },
+    ],
+    steps: [
+      'Mixez les tomates, le poivron et la moitié de l’oignon.',
+      'Faites revenir le reste de l’oignon dans l’huile, ajoutez la purée et laissez réduire.',
+      'Versez le riz rincé et le bouillon. Assaisonnez avec le thym et le sel.',
+      'Couvrez et laissez cuire à feu doux jusqu’à absorption du liquide. Aérez le riz avant de servir.',
+    ],
+    videoTitle: 'How to Make Nigerian Jollof Rice | Authentic Party Jollof Recipe',
+    videoUrl: 'https://www.youtube.com/watch?v=QHH1lsIyYbk',
+  },
+  {
+    id: 'atassi',
+    name: 'Atassi, riz aux haricots',
+    region: 'Bénin',
+    description: 'Un plat complet et nourrissant de riz et de haricots, apprécié au Bénin.',
+    preparationMinutes: 60,
+    image: 'stew',
+    suitableFor: ['déjeuner', 'dîner'],
+    ingredients: [
+      { name: 'Riz', quantity: '250 g' },
+      { name: 'Haricots rouges ou cornille', quantity: '250 g' },
+      { name: 'Oignon', quantity: '1' },
+      { name: 'Eau', quantity: '1,2 l' },
+      { name: 'Huile et sel', quantity: 'selon le goût' },
+    ],
+    steps: [
+      'Faites cuire les haricots dans une grande quantité d’eau jusqu’à ce qu’ils soient tendres.',
+      'Ajoutez le riz rincé, l’oignon émincé et le sel.',
+      'Laissez cuire à couvert à feu doux jusqu’à absorption de l’eau.',
+      'Servez chaud, avec une sauce tomate ou du piment à part.',
+    ],
+    videoTitle: 'Atassi – Le délicieux riz aux haricots du Bénin',
+    videoUrl: 'https://www.youtube.com/watch?v=55kmj06fwjU',
+  },
+  {
+    id: 'poisson-dahomey',
+    name: 'Ragoût de poisson façon Dahomey',
+    region: 'Bénin',
+    description: 'Un poisson mijoté à la tomate, accompagné de kuli-kuli.',
+    preparationMinutes: 45,
+    image: 'stew',
+    suitableFor: ['déjeuner', 'dîner'],
+    ingredients: [
+      { name: 'Poisson frais en morceaux', quantity: '600 g' },
+      { name: 'Tomates', quantity: '4' },
+      { name: 'Oignon', quantity: '1' },
+      { name: 'Ail', quantity: '2 gousses' },
+      { name: 'Kuli-kuli émietté', quantity: '50 g' },
+      { name: 'Huile, piment et sel', quantity: 'selon le goût' },
+    ],
+    steps: [
+      'Faites dorer légèrement le poisson dans une marmite avec un filet d’huile, puis réservez-le.',
+      'Faites revenir l’oignon et l’ail, puis ajoutez les tomates écrasées.',
+      'Versez un peu d’eau, assaisonnez et laissez mijoter 15 minutes.',
+      'Remettez le poisson dans la sauce et poursuivez la cuisson à feu doux. Parsemez de kuli-kuli au service.',
+    ],
+    videoTitle: 'DAHOMEY FISH STEW and KULI KULI Recipe from BENIN',
+    videoUrl: 'https://www.youtube.com/watch?v=2qASL0lIM34',
+  },
+  {
+    id: 'abolo',
+    name: 'Abolo vapeur',
+    region: 'Bénin',
+    description: 'Un pain de maïs légèrement fermenté, cuit à la vapeur.',
+    preparationMinutes: 50,
+    image: 'akara',
+    suitableFor: ['petit-déjeuner'],
+    ingredients: [
+      { name: 'Farine de maïs', quantity: '300 g' },
+      { name: 'Farine de riz', quantity: '100 g' },
+      { name: 'Levure boulangère sèche', quantity: '1 c. à café' },
+      { name: 'Sucre', quantity: '1 c. à soupe' },
+      { name: 'Eau tiède', quantity: '350 ml' },
+      { name: 'Sel', quantity: '½ c. à café' },
+    ],
+    steps: [
+      'Mélangez les farines, la levure, le sucre et le sel.',
+      'Ajoutez l’eau tiède progressivement en fouettant pour obtenir une pâte souple.',
+      'Couvrez et laissez lever dans un endroit tiède jusqu’à ce que la pâte gonfle.',
+      'Répartissez dans de petits moules et faites cuire à la vapeur environ 20 minutes.',
+    ],
+    videoTitle: 'HOW TO MAKE ABOLO / ABOLOO / ABLO',
+    videoUrl: 'https://www.youtube.com/watch?v=ui8LMoOqjQs',
+  },
+  {
+    id: 'tale-tale',
+    name: 'Talé-talé, beignets de banane',
+    region: 'Bénin',
+    description: 'Des beignets moelleux à la banane mûre, parfaits pour le petit-déjeuner.',
+    preparationMinutes: 25,
+    image: 'akara',
+    suitableFor: ['petit-déjeuner'],
+    ingredients: [
+      { name: 'Bananes très mûres', quantity: '3' },
+      { name: 'Farine de blé', quantity: '150 g' },
+      { name: 'Sucre', quantity: '1 c. à soupe (facultatif)' },
+      { name: 'Sel', quantity: '1 pincée' },
+      { name: 'Huile de friture', quantity: '400 ml' },
+    ],
+    steps: [
+      'Écrasez les bananes mûres à la fourchette.',
+      'Incorporez la farine, le sel et le sucre jusqu’à obtenir une pâte épaisse.',
+      'Faites chauffer l’huile à feu moyen.',
+      'Déposez de petites portions de pâte et faites-les dorer en les retournant régulièrement.',
+    ],
+    videoTitle: 'Tale Tale from Benin. Easy recipe from Africa.',
+    videoUrl: 'https://www.youtube.com/shorts/AmWajhbiH6w',
+  },
+  {
+    id: 'igname-frites',
+    name: 'Igname frite et accompagnement',
+    region: 'Bénin',
+    description: 'Des bâtonnets d’igname dorés servis avec une sauce pimentée.',
+    preparationMinutes: 40,
+    image: 'akara',
+    suitableFor: ['petit-déjeuner', 'déjeuner', 'dîner'],
+    ingredients: [
+      { name: 'Igname', quantity: '800 g' },
+      { name: 'Huile de friture', quantity: '500 ml' },
+      { name: 'Tomates', quantity: '2' },
+      { name: 'Piment', quantity: '1 petit' },
+      { name: 'Sel', quantity: 'selon le goût' },
+    ],
+    steps: [
+      'Épluchez l’igname, coupez-la en bâtonnets et rincez-les.',
+      'Faites frire les morceaux par petites quantités jusqu’à ce qu’ils soient tendres et dorés.',
+      'Écrasez les tomates avec le piment et le sel pour préparer une sauce fraîche.',
+      'Servez les frites d’igname chaudes avec la sauce.',
+    ],
+    videoTitle: 'IGNAME FRIT ET ACCOMPAGNEMENT (VIDEO ASMR)',
+    videoUrl: 'https://www.youtube.com/watch?v=UyB2SAqjAZM',
+  },
+  {
+    id: 'djenkoume',
+    name: 'Djenkoumé blanc (Bomiwo)',
+    region: 'Bénin',
+    description: 'Une pâte de maïs traditionnelle servie avec une sauce relevée.',
+    preparationMinutes: 45,
+    image: 'stew',
+    suitableFor: ['déjeuner', 'dîner'],
+    ingredients: [
+      { name: 'Farine de maïs', quantity: '400 g' },
+      { name: 'Eau', quantity: '900 ml' },
+      { name: 'Tomates', quantity: '3' },
+      { name: 'Oignon', quantity: '1' },
+      { name: 'Poisson fumé', quantity: '200 g' },
+      { name: 'Piment et sel', quantity: 'selon le goût' },
+    ],
+    steps: [
+      'Délayez une partie de la farine dans de l’eau froide.',
+      'Portez le reste de l’eau à ébullition, puis versez le mélange en remuant.',
+      'Ajoutez peu à peu la farine restante et mélangez énergiquement jusqu’à obtenir une pâte homogène.',
+      'Servez avec une sauce préparée avec les tomates, l’oignon, le poisson et le piment.',
+    ],
+    videoTitle: 'Djenkoume Blanc || Bomiwo || Recette Togolaise & Beninoise',
+    videoUrl: 'https://www.youtube.com/watch?v=PnEUJ_r3qyU',
+  },
+];
+
+export const RECIPE_BY_ID = Object.fromEntries(
+  RECIPES.map((recipe) => [recipe.id, recipe]),
+) as Record<string, Recipe>;

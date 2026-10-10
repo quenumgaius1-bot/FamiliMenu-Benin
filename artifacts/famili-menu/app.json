@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "FamiliMenu",
+    "slug": "famili-menu",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "famili-menu",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#F7F8F3"
+    },
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {},
+    "web": {
+      "favicon": "./assets/images/icon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-notifications",
+        {
+          "color": "#174C32"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
