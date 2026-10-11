@@ -5,12 +5,7 @@ workflow_dispatch:
 
 jobs:
 build:
-name: Build Android APK
 runs-on: ubuntu-latest
-
-defaults:
-  run:
-    working-directory: artifacts/famili-menu
 
 steps:
   - name: Checkout repository
@@ -21,14 +16,13 @@ steps:
     with:
       node-version: 22
 
-  - name: Enable pnpm
+  - name: Setup pnpm
     run: |
       corepack enable
       corepack prepare pnpm@10.8.1 --activate
 
   - name: Install dependencies
-    working-directory: .
-    run: pnpm install --frozen-lockfile
+    run: pnpm install --no-frozen-lockfile
 
   - name: Setup Java
     uses: actions/setup-java@v4
@@ -36,10 +30,17 @@ steps:
       distribution: temurin
       java-version: '17'
 
-  - name: Install Expo tools
-    run: pnpm add --global eas-cli
+  - name: Generate Android project
+    working-directory: artifacts/famili-menu
+    run: pnpm exec expo prebuild --platform android --no-install
 
   - name: Build APK
-    run: eas build --platform android --profile apk --local --non-interactive
-    env:
-      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    working-directory: artifacts/famili-menu/android
+    run: chmod +x gradlew && ./gradlew assembleDebug
+
+  - name: Upload APK
+    uses: actions/upload-artifact@v4
+    with:
+      name: FamiliMenu-APK
+      path: artifacts/famili-menu/android/app/build/outputs/apk/debug/app-debug.apk
+      if-no-files-found: error
