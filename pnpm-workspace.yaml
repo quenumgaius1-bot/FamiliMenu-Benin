@@ -25,6 +25,7 @@
 #     - typescript
 #
 # ============================================================================
+packageManagerStrictVersion: false
 minimumReleaseAge: 1440
 
 minimumReleaseAgeExclude:
