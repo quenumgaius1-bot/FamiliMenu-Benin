@@ -1,0 +1,45 @@
+name: Build FamiliMenu APK
+
+on:
+workflow_dispatch:
+
+jobs:
+build:
+name: Build Android APK
+runs-on: ubuntu-latest
+
+defaults:
+  run:
+    working-directory: artifacts/famili-menu
+
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v4
+
+  - name: Setup Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: 22
+
+  - name: Enable pnpm
+    run: |
+      corepack enable
+      corepack prepare pnpm@10.8.1 --activate
+
+  - name: Install dependencies
+    working-directory: .
+    run: pnpm install --frozen-lockfile
+
+  - name: Setup Java
+    uses: actions/setup-java@v4
+    with:
+      distribution: temurin
+      java-version: '17'
+
+  - name: Install Expo tools
+    run: pnpm add --global eas-cli
+
+  - name: Build APK
+    run: eas build --platform android --profile apk --local --non-interactive
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
